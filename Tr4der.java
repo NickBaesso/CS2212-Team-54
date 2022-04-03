@@ -10,7 +10,7 @@ import java.util.Locale;
 class TraderTableModel extends AbstractTableModel {
     String[] columnNames = {
             "Trading Client",
-            "Coin List",
+            "structure.Coin List",
             "Strategy Name"
     };
     List<String[]> data;
@@ -69,7 +69,7 @@ class ActionTableModel extends AbstractTableModel {
             "Strategy",
             "CryptoCoin",
             "Action",
-            "Quantity",
+            "structure.Quantity",
             "Price",
             "Date"
     };
