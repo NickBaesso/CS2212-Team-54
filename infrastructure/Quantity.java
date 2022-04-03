@@ -1,12 +1,10 @@
-package structure;
-
-import structure.Coin;
+package infrastructure;
 
 public class Quantity {
     private Boolean isCrypto;  // true for crypto, false for CAD
-    private float amount;
+    private double amount;
 
-    Quantity(Boolean type, float amount) {
+    public Quantity(Boolean type, double amount) {
         isCrypto = type;
         this.amount = amount;
     }
