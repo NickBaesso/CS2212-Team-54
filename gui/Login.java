@@ -1,3 +1,5 @@
+package gui;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -55,7 +57,7 @@ class LoginWindow extends JFrame implements ActionListener {
 
         add(panel, BorderLayout.CENTER);
 
-        setTitle("Login");
+        setTitle("gui.Login");
         //setPreferredSize(new Dimension(400, 120));
         setMinimumSize(new Dimension(400, 150));
         setMaximumSize(new Dimension(400, 150));

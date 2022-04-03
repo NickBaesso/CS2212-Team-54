@@ -1,15 +1,14 @@
+package utils;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public class DataFetcher {
+public class DataFetcher_bak {
     private JsonObject getDataForCrypto(String id, String date) {
         String urlString = String.format("https://api.coingecko.com/api/v3/coins/%s/history?date=%s", id, date);
         try {
@@ -68,7 +67,7 @@ public class DataFetcher {
     }
 
     public static void main(String[] args) {
-        DataFetcher fetcher = new DataFetcher();
+        DataFetcher_bak fetcher = new DataFetcher_bak();
         double price = fetcher.getPriceForCoin("bitcoin", "30-03-2022");
         double marketCap = fetcher.getMarketCapForCoin("bitcoin", "03-03-2022");
         double volume = fetcher.getVolumeForCoin("bitcoin", "03-03-2022");

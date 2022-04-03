@@ -1,3 +1,7 @@
+package structure;
+
+import structure.Coin;
+
 public class Quantity {
     private Boolean isCrypto;  // true for crypto, false for CAD
     private float amount;
@@ -7,7 +11,7 @@ public class Quantity {
         this.amount = amount;
     }
 
-    public float getAmountCrypto(Coin coin) {
+    public double getAmountCrypto(Coin coin) {
         if (isCrypto) return amount;
         else {
             return amount / coin.getPrice();
