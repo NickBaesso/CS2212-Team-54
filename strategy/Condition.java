@@ -1,6 +1,6 @@
 package strategy;
 
-import structure.Coin;
+import infrastructure.Coin;
 
 public class Condition {
     Coin target;

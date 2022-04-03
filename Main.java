@@ -163,7 +163,7 @@ class MainWindow extends JFrame implements ActionListener {
     }
 }
 
-public class Tr4der {
+public class Main {
     public static void main(String[] args) {
         MainWindow mainWindow = new MainWindow();
         mainWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);

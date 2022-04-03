@@ -1,14 +1,14 @@
 package strategy;
 
-import structure.*;
+import infrastructure.*;
 
-interface AbstractStrategy {
-    public Boolean rule_1(Condition c1, Condition c2, Coin target, Quantity quantity);
-    public Boolean rule_2(Condition c1, Condition c2, Coin target, Quantity quantity);
-    public Boolean rule_3(Condition c1, Condition c2, Coin target, Quantity quantity);
-    public Boolean rule_4(Condition c1, Condition c2, Coin target, Quantity quantity);
+import java.util.ArrayList;
 
-    public TradeResult doTrade ();
+public interface AbstractStrategy {
+    public TradeResult rule_1();
+    public TradeResult rule_2();
+    public TradeResult rule_3();
+    public TradeResult rule_4();
 
-    TradeResult trade(String[] coinList, float[] coinPriceList);
+    public ArrayList<TradeResult> trade();
 }
