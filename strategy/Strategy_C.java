@@ -11,7 +11,7 @@ public class Strategy_C implements AbstractStrategy {
 
     String name = "Strategy-C";
 
-    private Strategy_C instance;
+    private static Strategy_C instance;
     private AvailableCryptoList list;
     private HashMap<String, Coin> hmap;
 
@@ -20,11 +20,15 @@ public class Strategy_C implements AbstractStrategy {
         hmap = list.getMap();
     }
 
-    public Strategy_C getInstance() {
+    public static Strategy_C getInstance() {
         if (instance == null)
             instance = new Strategy_C();
 
         return instance;
+    }
+
+    public static String getName() {
+        return "Strategy-C";
     }
 
     /**

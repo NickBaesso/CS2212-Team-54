@@ -195,14 +195,14 @@ public class MainUI extends JFrame implements ActionListener {
                 if (strategyName.equals("Strategy-A")) {
                     strategy = Strategy_A.getInstance();
                 }
-                else if (strategyName.equals("Strategy-A")) {
-                    strategy = Strategy_A.getInstance();
+                else if (strategyName.equals("Strategy-B")) {
+                    strategy = Strategy_B.getInstance();
                 }
-                else if (strategyName.equals("Strategy-A")) {
-                    strategy = Strategy_A.getInstance();
+                else if (strategyName.equals("Strategy-C")) {
+                    strategy = Strategy_C.getInstance();
                 }
                 else {
-                    strategy = Strategy_A.getInstance();
+                    strategy = Strategy_D.getInstance();
                 }
                 System.out.println(traderName + " " + Arrays.toString(coinNames) + " " + strategyName);
                 Trader t = new Trader(traderName, clist, strategy);

@@ -2,7 +2,7 @@ package utils;
 
 import infrastructure.*;
 import strategy.AbstractStrategy;
-import strategy.Strategy_A;
+import strategy.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,14 +31,14 @@ public class Trade {
             if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_A")) {
                 strategy = Strategy_A.getInstance();
             }
-            else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_A")) {
-                strategy = Strategy_A.getInstance();
+            else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_B")) {
+                strategy = Strategy_B.getInstance();
             }
-            else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_A")) {
-                strategy = Strategy_A.getInstance();
+            else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_C")) {
+                strategy = Strategy_C.getInstance();
             }
             else {
-                strategy = Strategy_A.getInstance();
+                strategy = Strategy_D.getInstance();
             }
 
             for (TradeResult t : strategy.trade()) {
@@ -71,14 +71,14 @@ public class Trade {
             if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_A")) {
                 strategy = Strategy_A.getInstance();
             }
-            else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_A")) {
-                strategy = Strategy_A.getInstance();
+            else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_B")) {
+                strategy = Strategy_B.getInstance();
             }
-            else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_A")) {
-                strategy = Strategy_A.getInstance();
+            else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_C")) {
+                strategy = Strategy_C.getInstance();
             }
             else {
-                strategy = Strategy_A.getInstance();
+                strategy = Strategy_D.getInstance();
             }
 
             for (TradeResult t : strategy.trade()) {
