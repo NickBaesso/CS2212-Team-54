@@ -41,7 +41,7 @@ import utils.*;
  *
  * @author Jiangqi
  */
-public class MainUI extends JFrame implements ActionListener {
+public class MainUI extends GenericUI implements ActionListener {
     private static final long serialVersionUID = 1L;
 
     private static MainUI instance;
@@ -85,9 +85,9 @@ public class MainUI extends JFrame implements ActionListener {
     /**
      * This constructor creates initializes all the UI elements used in the main method.
      */
-    private MainUI() {
+    public MainUI() {
         // Set window title
-        super("Crypto Trading Tool");
+        setTitle("Crypto Trading Tool");
 
         // Set top bar
         JPanel north = new JPanel();
@@ -255,4 +255,8 @@ public class MainUI extends JFrame implements ActionListener {
         }
     }
 
+    @Override
+    public void request() {
+
+    }
 }
