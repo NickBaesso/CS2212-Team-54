@@ -5,15 +5,15 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * Thsi class is responsible for verifying that the
+ * This class is responsible for verifying that the
  * information inputted into the login window is
  * correct.
  *
  * @author Jiangqi
  */
 public class Authenticator {
-    private boolean loggedIn = false;
-    private String fileLoc;
+    private boolean loggedIn = false; // Returns if the user was successful or failed.
+    private String fileLoc; // File location.
 
     public Authenticator(String loc) {
         fileLoc = loc;
@@ -36,7 +36,7 @@ public class Authenticator {
         try {
             File db = new File(fileLoc);
             Scanner scanner = new Scanner(db);
-            while (scanner.hasNextLine()) {
+            while (scanner.hasNextLine()) { // Read from file while data can still be read.
                 String line = scanner.nextLine();
                 String[] parts = line.split(" ");
                 if (parts[0].equals(username) && parts[1].equals(password)) {  // match
