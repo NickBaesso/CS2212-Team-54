@@ -25,13 +25,11 @@ public class Trade {
         updateInterestedCoins();
 
         for (Trader trader : traderList) {
-
             AbstractStrategy strategy;
 
             if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_A")) {
                 strategy = Strategy_A.getInstance();
-            }
-            else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_A")) {
+            } else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_A")) {
                 strategy = Strategy_A.getInstance();
             }
             else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_A")) {
