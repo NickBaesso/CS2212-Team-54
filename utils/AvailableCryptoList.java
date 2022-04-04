@@ -131,9 +131,10 @@ public class AvailableCryptoList {
 	}
 
 	public static void main(String[] args) throws Exception {
-		AvailableCryptoList list = getInstance();
-		Coin coin = list.getMap().get("ada");
-		System.out.printf("%s: %f\n", coin.getSymbol(), coin.getPrice());
+		Coin[] list = getInstance().getAvailableCryptos();
+		for (Coin coin : list) {
+			System.out.printf("%s: %f\n", coin.getSymbol(), coin.getPrice());
+		}
 	}
 
 }

@@ -14,9 +14,9 @@ import java.util.HashMap;
 
 public class Strategy_A implements AbstractStrategy {
 
-    String name = "Strategy-A";
+    public static String name = "Strategy-A";
 
-    private Strategy_A instance;
+    private static Strategy_A instance;
     private AvailableCryptoList list;
     private HashMap<String, Coin> hmap;
 
@@ -25,7 +25,11 @@ public class Strategy_A implements AbstractStrategy {
         hmap = list.getMap();
     }
 
-    public Strategy_A getInstance() {
+    public static String getName() {
+        return "Strategy-A";
+    }
+
+    public static Strategy_A getInstance() {
         if (instance == null)
             instance = new Strategy_A();
 
@@ -35,8 +39,8 @@ public class Strategy_A implements AbstractStrategy {
     @Override
     public TradeResult rule_1() {
 
-        Condition c1 = new Condition(hmap.get("btc"), 50000, "<=");  // BTC is less than or equal to 50,000
-        Condition c2 = new Condition(hmap.get("ada"), 2, ">");  // ADA is more than 2
+        Condition c1 = new Condition(hmap.get("btc"), 9999999, "<=");  // BTC is less than or equal to 50,000
+        Condition c2 = new Condition(hmap.get("ada"), 1, ">");  // ADA is more than 2
         Quantity quan = new Quantity(true, 10);  // true for crypto amount
 
         if (c1.evaluate() && c2.evaluate()) {
@@ -114,5 +118,10 @@ public class Strategy_A implements AbstractStrategy {
 
         results.removeAll(Collections.singleton(null));  // remove all unsuccessful trades
         return results;
+    }
+
+    public static void main(String[] args) {
+        Strategy_A strategyA = Strategy_A.getInstance();
+        System.out.println(strategyA.trade().get(0).price);
     }
 }
