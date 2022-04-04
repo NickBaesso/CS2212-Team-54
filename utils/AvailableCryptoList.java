@@ -15,6 +15,12 @@ import com.google.gson.JsonParser;
 
 import infrastructure.Coin;
 
+/**
+ * This class is responsible for the retrieving crypto
+ * coin data from the coin gecko website.
+ *
+ * @author Original: Kostas Kontogiannis, Modifications: Jinagqi
+ */
 public class AvailableCryptoList {
 	private static AvailableCryptoList instance = null;
 
@@ -63,6 +69,7 @@ public class AvailableCryptoList {
 			}
 
 		} catch (IOException e) {
+			e.printStackTrace();
 			// TODO Auto-generated catch block e.printStackTrace();
 		}
 	}

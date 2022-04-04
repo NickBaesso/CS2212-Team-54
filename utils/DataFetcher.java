@@ -11,6 +11,10 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+/**
+ * Retrieves data from coingecko database.
+ * @author Jiangqi
+ */
 public class DataFetcher {
 
 	private JsonObject getDataForCrypto(String id, String date) {

@@ -6,12 +6,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-
+/**
+ * last of 4 strategies for computing trade data
+ * @author Nick
+ */
 public class Strategy_D implements AbstractStrategy {
 
-    String name = "Strategy-D";
+    private final String name = "Strategy-D";
 
-    private Strategy_B instance;
+    private Strategy_D instance;
     private AvailableCryptoList list;
     private HashMap<String, Coin> hmap;
 
@@ -104,7 +107,6 @@ public class Strategy_D implements AbstractStrategy {
      */
     @Override
     public TradeResult rule_4() {
-
         Condition c1 = new Condition(hmap.get("bnb"), 700, ">");  // BNB is more than 700
         Quantity quan = new Quantity(false, 5000);  // true for crypto amount
 

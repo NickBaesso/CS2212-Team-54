@@ -5,19 +5,17 @@ import java.util.Arrays;
 
 /**
  * This class is used to define trade brokers.
- * Not finished. Will add rest of commments and code later.
  * @author Jay
  */
 public class Broker {
     private String name;
-    private String coin;
     private String strategy;
     private ArrayList<String> cryptoCoins;
 
     public Broker (String name, String strategy, String coins) {
         this.name = name;
         this.strategy = strategy;
-        cryptoCoins = new ArrayList<String>();
+        cryptoCoins = new ArrayList<>();
         cryptoCoins.addAll(Arrays.asList(coins.split(",")));
     }
 
