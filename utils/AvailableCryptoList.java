@@ -54,18 +54,18 @@ public class AvailableCryptoList {
 				}
 				sc.close();
 				System.out.println(inline);
-//				JsonArray jsonArray = new JsonParser().parse(inline).getAsJsonArray();
-//				int size = jsonArray.size();
+				JsonArray jsonArray = new JsonParser().parse(inline).getAsJsonArray();
+				int size = jsonArray.size();
 //				
-//				String name, id;
-//				for (int i = 0; i < size; i++) {
+				String name, id;
+				for (int i = 0; i < size; i++) {
 //					JsonObject object = jsonArray.get(i).getAsJsonObject();
 //					name = object.get("name").getAsString();
 //					id = object.get("id").getAsString();
-//					
+//
 //					availableCryptosMap.put(name, id);
 //					availableCryptosList.add(name);
-//				}
+				}
 			}
 
 		} catch (IOException e) {

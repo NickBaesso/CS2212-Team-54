@@ -77,7 +77,6 @@ public class LoginWindow extends JFrame implements ActionListener {
         String password = pwField.getText();
 
         loggedIn = authenticator.authenticate(username, password);
-
         if (!loggedIn)
             JOptionPane.showMessageDialog(this, "Wrong username or password");
         this.dispose();
