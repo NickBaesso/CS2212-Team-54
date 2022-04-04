@@ -92,7 +92,7 @@ public class MainUI extends GenericUI implements ActionListener {
         // Set top bar
         JPanel north = new JPanel();
 
-        JButton trade = new JButton("Perform utils.Trade");
+        JButton trade = new JButton("Perform Trade");
         trade.setActionCommand("refresh");
         trade.addActionListener(this);
 
@@ -216,14 +216,14 @@ public class MainUI extends GenericUI implements ActionListener {
                 if (strategyName.equals("Strategy-A")) {
                     strategy = Strategy_A.getInstance();
                 }
-                else if (strategyName.equals("Strategy-A")) {
-                    strategy = Strategy_A.getInstance();
+                else if (strategyName.equals("Strategy-B")) {
+                    strategy = Strategy_B.getInstance();
                 }
-                else if (strategyName.equals("Strategy-A")) {
-                    strategy = Strategy_A.getInstance();
+                else if (strategyName.equals("Strategy-C")) {
+                    strategy = Strategy_C.getInstance();
                 }
                 else {
-                    strategy = Strategy_A.getInstance();
+                    strategy = Strategy_D.getInstance();
                 }
                 System.out.println(traderName + " " + Arrays.toString(coinNames) + " " + strategyName);
                 Trader t = new Trader(traderName, clist, strategy);

@@ -32,6 +32,10 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 
 import gui.MainUI;
+import strategy.Strategy_A;
+import strategy.Strategy_B;
+import strategy.Strategy_C;
+import strategy.Strategy_D;
 
 public class DataVisualizationCreator {
 
@@ -74,7 +78,7 @@ public class DataVisualizationCreator {
 	
 	private void createTableOutput() {
 		// Dummy dates for demo purposes. These should come from selection menu
-		Object[] columnNames = {"Trader","Strategy","CryptoCoin","Action","structure.Quantity","Price","Date"};
+		Object[] columnNames = {"Trader","Strategy","CryptoCoin","Action","Quantity","Price","Date"};
 		
 		// Dummy data for demo purposes. These should come from actual fetcher
 //		Object[][] data = {
@@ -236,11 +240,26 @@ public class DataVisualizationCreator {
 ////		dataset.setValue(1, "Trader-4", "Strategy-C");
 //		dataset.setValue(10, "Trader-5", "Strategy-D");
 
-		for (TradeResult r : resultList) {
-			System.out.print(frequency(resultList, r.trader.getName()));
-			System.out.print(r.trader.getName());
-			System.out.print(r.strategy);
-			dataset.setValue(frequency(resultList, r.trader.getName()), r.trader.getName(), r.strategy);
+		for (Trader t : traderList) {
+			System.out.print(frequency(resultList, t.getName()));
+			System.out.print(t.getName());
+
+			String strategyName;
+			if (t.getStrategy().getClass().getName().equals("strategy.Strategy_A")) {
+				strategyName = Strategy_A.getInstance().getName();
+			}
+			else if (t.getStrategy().getClass().getName().equals("strategy.Strategy_B")) {
+				strategyName = Strategy_B.getInstance().getName();
+			}
+			else if (t.getStrategy().getClass().getName().equals("strategy.Strategy_C")) {
+				strategyName = Strategy_C.getInstance().getName();
+			}
+			else {
+				strategyName = Strategy_D.getInstance().getName();
+			}
+
+			System.out.print(strategyName);
+			dataset.setValue(frequency(resultList, t.getName()), t.getName(), strategyName);
 		}
 
 		CategoryPlot plot = new CategoryPlot();

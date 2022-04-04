@@ -30,6 +30,10 @@ public class Strategy_C implements AbstractStrategy {
         return instance;
     }
 
+    public static String getName() {
+        return "Strategy-C";
+    }
+
     /**
      * This method determines and compiles the data for the first rule of the Strategy_C trading strategy.
      * 
