@@ -92,7 +92,7 @@ public class MainUI extends JFrame implements ActionListener {
         // Set top bar
         JPanel north = new JPanel();
 
-        JButton trade = new JButton("Perform utils.Trade");
+        JButton trade = new JButton("Perform Trade");
         trade.setActionCommand("refresh");
         trade.addActionListener(this);
 
