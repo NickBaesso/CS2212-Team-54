@@ -29,6 +29,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import utils.DataVisualizationCreator;
+import infrastructure.*;
+import strategy.*;
+import utils.*;
 
 public class MainUI extends JFrame implements ActionListener {
     /**
@@ -54,11 +57,20 @@ public class MainUI extends JFrame implements ActionListener {
     private DefaultTableModel dtm;
     private JTable table;
 
+    private ArrayList<Trader> traderList = new ArrayList<Trader>();
+    private ArrayList<String> traderTracker = new ArrayList<String>();
+    private AvailableCryptoList availableCryptoList = AvailableCryptoList.getInstance();
+    private HashMap<String, Coin> hmap = availableCryptoList.getMap();
+
     public static MainUI getInstance() {
         if (instance == null)
             instance = new MainUI();
 
         return instance;
+    }
+
+    public void setTraderList(ArrayList<Trader> tlist) {
+        traderList = tlist;
     }
 
     private MainUI() {
@@ -71,7 +83,7 @@ public class MainUI extends JFrame implements ActionListener {
 
         JPanel north = new JPanel();
 
-        JButton trade = new JButton("Perform Trade");
+        JButton trade = new JButton("Perform utils.Trade");
         trade.setActionCommand("refresh");
         trade.addActionListener(this);
 
@@ -80,7 +92,7 @@ public class MainUI extends JFrame implements ActionListener {
 
         south.add(trade);
 
-        dtm = new DefaultTableModel(new Object[]{"Trading Client", "structure.Coin List", "Strategy Name"}, 1);
+        dtm = new DefaultTableModel(new Object[]{"Trading Client", "Coin List", "Strategy Name"}, 1);
         table = new JTable(dtm);
         // table.setPreferredSize(new Dimension(600, 300));
         JScrollPane scrollPane = new JScrollPane(table);
@@ -157,26 +169,65 @@ public class MainUI extends JFrame implements ActionListener {
                     return;
                 }
                 String traderName = traderObject.toString();
+
                 Object coinObject = dtm.getValueAt(count, 1);
                 if (coinObject == null) {
                     JOptionPane.showMessageDialog(this, "please fill in cryptocoin list on line " + (count + 1));
                     return;
                 }
                 String[] coinNames = coinObject.toString().split(",");
+                ArrayList<Coin> clist = new ArrayList<Coin>();
+
+                for (String cname : coinNames) {
+                    String csymbol = cname.toLowerCase();
+                    if (hmap.containsKey(csymbol)) {
+                        clist.add(hmap.get(csymbol));  // add coin to trader's interests
+                    }
+                }
+
                 Object strategyObject = dtm.getValueAt(count, 2);
                 if (strategyObject == null) {
                     JOptionPane.showMessageDialog(this, "please fill in strategy name on line " + (count + 1));
                     return;
                 }
                 String strategyName = strategyObject.toString();
+                AbstractStrategy strategy;
+                if (strategyName.equals("Strategy-A")) {
+                    strategy = Strategy_A.getInstance();
+                }
+                else if (strategyName.equals("Strategy-A")) {
+                    strategy = Strategy_A.getInstance();
+                }
+                else if (strategyName.equals("Strategy-A")) {
+                    strategy = Strategy_A.getInstance();
+                }
+                else {
+                    strategy = Strategy_A.getInstance();
+                }
                 System.out.println(traderName + " " + Arrays.toString(coinNames) + " " + strategyName);
+                Trader t = new Trader(traderName, clist, strategy);
+                traderList.add(t);
             }
             stats.removeAll();
-            DataVisualizationCreator creator = new DataVisualizationCreator();
+
+            Trade trade = new Trade(traderList);
+
+            DataVisualizationCreator creator = new DataVisualizationCreator(Strategy_A.getInstance().trade(), traderList);
             creator.createCharts();
-        } else if ("addTableRow".equals(command)) {
-            dtm.addRow(new String[3]);
-        } else if ("remTableRow".equals(command)) {
+        }
+        else if ("addTableRow".equals(command)) {
+            // trader already existed
+            Object traderObject = dtm.getValueAt(dtm.getRowCount() - 1, 0);
+            String traderName = traderObject.toString();
+            if (traderTracker.contains(traderName)) {
+                JOptionPane.showMessageDialog(this, "trader already existed");
+            }
+            else {
+                traderTracker.add(traderName);
+                dtm.addRow(new String[3]);
+            }
+        }
+        else if ("remTableRow".equals(command)) {
             int selectedRow = table.getSelectedRow();
             if (selectedRow != -1)
                 dtm.removeRow(selectedRow);

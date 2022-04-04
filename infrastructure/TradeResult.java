@@ -5,13 +5,14 @@ import java.util.Date;
 
 public class TradeResult {
 
-    // this is just a data structure, no need to hide the data; change it all you want
-    String strategy;
-    Coin coin;
-    String action;
-    Quantity quantity;
-    double price;
-    String date;
+    // this is just a data structure, no need to hide the data
+    public String strategy;
+    public Coin coin;
+    public String action;
+    public Quantity quantity;
+    public double price;
+    public String date;
+    public Trader trader;
 
     public TradeResult(String strategy, Coin coin, String action, Quantity quantity, double price) {
         this.strategy = strategy;
