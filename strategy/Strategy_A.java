@@ -6,12 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-/*
- * Update required: needs rules!!!!!!!!!!
- * rule 3 and 4 are just copies of 2
- * - Thanks, Jiangqi
- */
-
 public class Strategy_A implements AbstractStrategy {
 
     String name = "Strategy-A";
@@ -32,6 +26,11 @@ public class Strategy_A implements AbstractStrategy {
         return instance;
     }
 
+    /**
+     * This method determines and compiles the data for the first rule of the Strategy_A trading strategy.
+     * 
+     * @return The resulting data of employing this rule in the trade strategy.
+     */
     @Override
     public TradeResult rule_1() {
 
@@ -43,13 +42,18 @@ public class Strategy_A implements AbstractStrategy {
             return new TradeResult(
                     name,                             // Strategy-A
                     hmap.get("ada"),                  // coin ADA
-                    "Buy",                     // action
+                    "Buy",                            // action
                     quan,                             // buy 10 ADA
                     hmap.get("ada").getPrice());      // ADA price
         }
         else return null;
     }
 
+    /**
+     * This method determines and compiles the data for the second rule of the Strategy_A trading strategy.
+     * 
+     * @return The resulting data of employing this rule in the trade strategy.
+     */
     @Override
     public TradeResult rule_2() {
 
@@ -61,49 +65,63 @@ public class Strategy_A implements AbstractStrategy {
             return new TradeResult(
                     name,                             // Strategy-A
                     hmap.get("ada"),                  // coin ADA
-                    "Buy",                     // action
-                    quan,                             // buy 10 ADA
+                    "Buy",                            // action
+                    quan,                             // buy $1000 of ADA
                     hmap.get("ada").getPrice());      // ADA price
         }
         else return null;
     }
 
+    /**
+     * This method determines and compiles the data for the third rule of the Strategy_A trading strategy.
+     * 
+     * @return The resulting data of employing this rule in the trade strategy.
+     */
     @Override
     public TradeResult rule_3() {
 
-        Condition c1 = new Condition(hmap.get("eth"), 3500, "<");  // ETH is less than 3500
+        Condition c1 = new Condition(hmap.get("dot"), 25, ">");  // DOT is greater than 25
         Condition c2 = new Condition(hmap.get("ada"), 2, "<=");  // ADA is less than or equal to 2
-        Quantity quan = new Quantity(false, 1000);  // false for CAD amount
+        Quantity quan = new Quantity(true, 5);  // true for crypto amount
 
         if (c1.evaluate() && c2.evaluate()) {
             return new TradeResult(
                     name,                             // Strategy-A
                     hmap.get("ada"),                  // coin ADA
-                    "Buy",                     // action
-                    quan,                             // buy 10 ADA
+                    "Buy",                            // action
+                    quan,                             // buy 5 ADA
                     hmap.get("ada").getPrice());      // ADA price
         }
         else return null;
     }
 
+    /**
+     * This method determines and compiles the data for the fourth rule of the Strategy_A trading strategy.
+     * 
+     * @return The resulting data of employing this rule in the trade strategy.
+     */
     @Override
     public TradeResult rule_4() {
 
-        Condition c1 = new Condition(hmap.get("eth"), 3500, "<");  // ETH is less than 3500
-        Condition c2 = new Condition(hmap.get("ada"), 2, "<=");  // ADA is less than or equal to 2
+        Condition c1 = new Condition(hmap.get("ada"), 3, ">");  // ADA is greater than 3
         Quantity quan = new Quantity(false, 1000);  // false for CAD amount
 
         if (c1.evaluate() && c2.evaluate()) {
             return new TradeResult(
                     name,                             // Strategy-A
                     hmap.get("ada"),                  // coin ADA
-                    "Buy",                     // action
-                    quan,                             // buy 10 ADA
+                    "Sell",                           // action
+                    quan,                             // sell $1000 worth of ADA
                     hmap.get("ada").getPrice());      // ADA price
         }
         else return null;
     }
 
+    /**
+     * This method determines the result after employing all rules for Strategy_A and returns a list of the resulting data.
+     * 
+     * @return A list of all the results after all the rules are used.
+     */
     @Override
     public ArrayList<TradeResult> trade() {
         ArrayList<TradeResult> results = new ArrayList<TradeResult>();
