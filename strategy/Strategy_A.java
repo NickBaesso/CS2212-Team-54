@@ -106,7 +106,7 @@ public class Strategy_A implements AbstractStrategy {
         Condition c1 = new Condition(hmap.get("ada"), 3, ">");  // ADA is greater than 3
         Quantity quan = new Quantity(false, 1000);  // false for CAD amount
 
-        if (c1.evaluate() && c2.evaluate()) {
+        if (c1.evaluate()) {
             return new TradeResult(
                     name,                             // Strategy-A
                     hmap.get("ada"),                  // coin ADA
