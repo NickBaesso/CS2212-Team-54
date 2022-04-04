@@ -6,14 +6,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * This class handles the login ui creation and event handling.
+ * @author Jiangqi
+ */
 public class LoginWindow extends JFrame implements ActionListener {
-    JButton submitButton;
-    JPanel panel, submitPanel;
-    JLabel userLabel, pwLabel;
-    JTextField userField, pwField;
-    Authenticator authenticator;
-    GridBagConstraints constraints;
-    Boolean loggedIn = false;
+    private JButton submitButton;
+    private JPanel panel, submitPanel;
+    private JLabel userLabel, pwLabel;
+    private JTextField userField, pwField;
+    private Authenticator authenticator;
+    private GridBagConstraints constraints;
+    private boolean loggedIn = false;
 
     public LoginWindow(Authenticator auth) {
         authenticator = auth;
@@ -63,19 +67,28 @@ public class LoginWindow extends JFrame implements ActionListener {
         setMaximumSize(new Dimension(400, 150));
     }
 
+    /**
+     * This class handles taking in the username and password text
+     * and determining whether to login or quit.
+     * @param actionEvent
+     */
     public void actionPerformed(ActionEvent actionEvent) {
         String username = userField.getText();
         String password = pwField.getText();
 
         loggedIn = authenticator.authenticate(username, password);
-
-        if (!loggedIn) {
+        if (!loggedIn)
             JOptionPane.showMessageDialog(this, "Wrong username or password");
-            this.dispose();
-        }
         this.dispose();
     }
 
+    /**
+     * Adjusts the constraints on the UI
+     * @param row
+     * @param col
+     * @param rowspan
+     * @param colspan
+     */
     private void setConstraints(int row, int col, int rowspan, int colspan) {
         constraints.fill = GridBagConstraints.BOTH;
         constraints.gridy = row;

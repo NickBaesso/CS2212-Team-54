@@ -33,10 +33,15 @@ import infrastructure.*;
 import strategy.*;
 import utils.*;
 
+/**
+ * The main window/UI for the program. This is where
+ * all the trade information will be displayed to the
+ * user throught the program execution. This will also
+ * be how the user interacts with the program.
+ *
+ * @author Jiangqi
+ */
 public class MainUI extends JFrame implements ActionListener {
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     private static MainUI instance;
@@ -62,6 +67,10 @@ public class MainUI extends JFrame implements ActionListener {
     private AvailableCryptoList availableCryptoList = AvailableCryptoList.getInstance();
     private HashMap<String, Coin> hmap = availableCryptoList.getMap();
 
+    /**
+     * Proxy design method for situations when the user
+     * @return an instance of the MainUI class
+     */
     public static MainUI getInstance() {
         if (instance == null)
             instance = new MainUI();
@@ -73,14 +82,14 @@ public class MainUI extends JFrame implements ActionListener {
         traderList = tlist;
     }
 
+    /**
+     * This constructor creates initializes all the UI elements used in the main method.
+     */
     private MainUI() {
-
         // Set window title
         super("Crypto Trading Tool");
 
         // Set top bar
-
-
         JPanel north = new JPanel();
 
         JButton trade = new JButton("Perform utils.Trade");
@@ -146,11 +155,19 @@ public class MainUI extends JFrame implements ActionListener {
 //		getContentPane().add(west, BorderLayout.WEST);
     }
 
+    /**
+     * Updates the UI compoonent with new information.
+     * @param component
+     */
     public void updateStats(JComponent component) {
         stats.add(component);
         stats.revalidate();
     }
 
+    /**
+     * Creates an instance of the Main Window UI and provides the window constraints.
+     * @param args
+     */
     public static void main(String[] args) {
         JFrame frame = MainUI.getInstance();
         frame.setSize(900, 600);
@@ -158,6 +175,10 @@ public class MainUI extends JFrame implements ActionListener {
         frame.setVisible(true);
     }
 
+    /**
+     * This method handles the insertion of UI object
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();

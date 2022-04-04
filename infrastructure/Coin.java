@@ -3,6 +3,10 @@ package infrastructure;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * This class represents the data for a coin.
+ * @author Jiangqi
+ */
 public class Coin {
     private String name;
     private double price;
@@ -18,7 +22,7 @@ public class Coin {
 
     public Coin(String name, String symbol, String ID) {
         this.name = name;
-        this.price = 0.0;
+        price = 0.0;
         this.symbol = symbol;
         this.ID = ID;
     }

@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-
+/**
+ * 2nd of four strategies for the program.
+ * @author Nick
+ */
 public class Strategy_B implements AbstractStrategy {
 
-    String name = "Strategy-B";
+    private final String name = "Strategy-B";
 
     private static Strategy_B instance;
     private AvailableCryptoList list;

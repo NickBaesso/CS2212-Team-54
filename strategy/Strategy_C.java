@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-
+/**
+ * 3rd of 4 strategies for trading
+ * @author Nick
+ */
 public class Strategy_C implements AbstractStrategy {
 
-    String name = "Strategy-C";
+    private final String name = "Strategy-C";
 
     private static Strategy_C instance;
     private AvailableCryptoList list;
