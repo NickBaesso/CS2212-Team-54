@@ -4,24 +4,34 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * Thsi class is responsible for verifying that the
+ * information inputted into the login window is
+ * correct.
+ *
+ * @author Jiangqi
+ */
 public class Authenticator {
-    Boolean loggedIn = false;
-    String username;
-    String password;
-    String fileLoc;
+    private boolean loggedIn = false;
+    private String fileLoc;
 
     public Authenticator(String loc) {
         fileLoc = loc;
     }
 
-    public Boolean isLoggedIn() {
-        return loggedIn;
-    }
+    /**
+     * @return whether or not the user is logged In
+     */
+    public boolean isLoggedIn() { return loggedIn; }
 
-    public Boolean authenticate(String username, String password) {
-        this.username = username;
-        this.password = password;
-
+    /**
+     * Check that the given password and name match
+     * what is stored in the file.
+     * @param username
+     * @param password
+     * @return true or false depending on the results of the match.
+     */
+    public boolean authenticate(String username, String password) {
         // io here
         try {
             File db = new File(fileLoc);
