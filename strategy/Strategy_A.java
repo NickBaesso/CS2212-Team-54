@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-public class Strategy_A extends StrategyProduct implements AbstractStrategy {
+public class Strategy_A extends StrategyManufacturer_A implements AbstractStrategy {
 
     public static String name = "Strategy-A";
 
