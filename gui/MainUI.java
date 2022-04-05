@@ -244,6 +244,9 @@ public class MainUI extends GenericUI implements ActionListener {
 
             DataVisualizationCreator creator = new DataVisualizationCreator(Strategy_A.getInstance().trade(), traderList);
             creator.createCharts();
+
+            // clear previous inputs
+            traderList.removeAll(traderList);
         }
         else if ("addTableRow".equals(command)) {
             // trader already existed
