@@ -20,7 +20,6 @@ public class Trade {
         this.traderList = traderList;
     }
 
-
     /**
      *
      * @return

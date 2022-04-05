@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * This class represents the data for a coin.
+ * This class represents a coin.
  * @author Jiangqi
  */
 public class Coin {
@@ -13,6 +13,14 @@ public class Coin {
     private String symbol; // BTC, USDT, etc.
     private String ID;
 
+    /**
+     * Creates a coin with the given parameters
+     * this one
+     * @param name
+     * @param symbol
+     * @param ID
+     * @param price
+     */
     public Coin(String name, String symbol, String ID, double price) {
         this.name = name;
         this.price = price;

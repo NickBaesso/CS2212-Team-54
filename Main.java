@@ -6,19 +6,11 @@ import infrastructure.*;
 import javax.swing.*;
 import java.util.ArrayList;
 
+/**
+ * This is the main class of the program that sets everything off.
+ * @author Jiangqi
+ */
 public class Main {
-
-    /*private static void showMainUI() {
-        MainUI ui = MainUI.getInstance();
-        ArrayList<Trader> traderList = new ArrayList<Trader>();
-
-
-        ui.setTraderList(traderList);
-
-        ui.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        ui.setVisible(true);
-    }*/
-
     public static void main(String[] args) {
         Authenticator auth = new Authenticator("pw.txt");
         GenericUI proxy = new LoginWindow(auth);
@@ -29,7 +21,6 @@ public class Main {
             public void windowClosed(java.awt.event.WindowEvent windowEvent) {
                 if (auth.isLoggedIn()) {
                     System.out.println("hi");
-                    //showMainUI();
                     proxy.request();
                 }
                 else {

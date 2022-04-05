@@ -68,10 +68,6 @@ public class MainUI extends GenericUI implements ActionListener {
     private AvailableCryptoList availableCryptoList = AvailableCryptoList.getInstance();
     private HashMap<String, Coin> hmap = availableCryptoList.getMap();
 
-    /**
-     * Proxy design method for situations when the user
-     * @return an instance of the MainUI class
-     */
     public static MainUI getInstance() {
         if (instance == null)
             instance = new MainUI();
@@ -267,8 +263,13 @@ public class MainUI extends GenericUI implements ActionListener {
         }
     }
 
+    /**
+     * This method is part of the proxy design
+     * and will indicate that the authorization
+     * was successful.
+     */
     @Override
     public void request() {
-
+        System.out.println("SUCCESSFUL!");
     }
 }
