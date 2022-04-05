@@ -43,7 +43,7 @@ public class Strategy_C implements AbstractStrategy {
 
 //         Condition c1 = new Condition(hmap.get("eth"), 2500, "<=");  // ETH is less than or equal to 2500
 //         Condition c2 = new Condition(hmap.get("bnb"), 550, ">");  // BNB is more than 550
-        Condition c1 = new Condition(hmap.get("eth"), 1000, "<=");  // ETH is less than or equal to 1000
+        Condition c1 = new Condition(hmap.get("eth"), 4000, "<=");  // ETH is less than or equal to 4000
         Condition c2 = new Condition(hmap.get("bnb"), 350, ">");  // BNB is more than 350
         
         Quantity quan = new Quantity(true, 10);  // true for crypto amount
@@ -69,7 +69,7 @@ public class Strategy_C implements AbstractStrategy {
 
 //         Condition c1 = new Condition(hmap.get("eth"), 3000, "<=");  // ETH is less than or equal to 3000
 //         Condition c2 = new Condition(hmap.get("sol"), 150, ">");  // SOL is less than 150
-        Condition c1 = new Condition(hmap.get("eth"), 1500, "<=");  // ETH is less than or equal to 1500
+        Condition c1 = new Condition(hmap.get("eth"), 4500, "<=");  // ETH is less than or equal to 4500
         Condition c2 = new Condition(hmap.get("sol"), 50, ">");  // SOL is less than 50
         
         Quantity quan = new Quantity(true, 5);  // true for crypto amount
@@ -95,7 +95,7 @@ public class Strategy_C implements AbstractStrategy {
 
 //         Condition c1 = new Condition(hmap.get("eth"), 3500, ">");  // ETH is less than or equal to 3500
 //         Condition c2 = new Condition(hmap.get("xmr"), 350, ">");  // XMR is more than 350
-        Condition c1 = new Condition(hmap.get("eth"), 2000, ">");  // ETH is less than or equal to 2000
+        Condition c1 = new Condition(hmap.get("eth"), 5000, ">");  // ETH is less than or equal to 5000
         Condition c2 = new Condition(hmap.get("xmr"), 150, ">");  // XMR is more than 150
         
         Quantity quan = new Quantity(false, 4000);  // false for CAD amount
