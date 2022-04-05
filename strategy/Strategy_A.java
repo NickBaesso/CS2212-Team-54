@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-public class Strategy_A implements AbstractStrategy {
+public class Strategy_A extends StrategyProduct implements AbstractStrategy {
 
     public static String name = "Strategy-A";
 
@@ -14,7 +14,7 @@ public class Strategy_A implements AbstractStrategy {
     private AvailableCryptoList list;
     private HashMap<String, Coin> hmap;
 
-    private Strategy_A() {
+    public Strategy_A() {
         list = AvailableCryptoList.getInstance();
         hmap = list.getMap();
     }

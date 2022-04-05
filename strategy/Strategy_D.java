@@ -10,7 +10,7 @@ import java.util.HashMap;
  * last of 4 strategies for computing trade data
  * @author Nick
  */
-public class Strategy_D implements AbstractStrategy {
+public class Strategy_D extends StrategyProduct implements AbstractStrategy {
 
     private final String name = "Strategy-D";
 
@@ -18,7 +18,7 @@ public class Strategy_D implements AbstractStrategy {
     private final AvailableCryptoList list;
     private final HashMap<String, Coin> hmap;
 
-    private Strategy_D() {
+    public Strategy_D() {
         list = AvailableCryptoList.getInstance();
         hmap = list.getMap();
     }

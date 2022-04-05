@@ -10,7 +10,7 @@ import java.util.HashMap;
  * 2nd of four strategies for the program.
  * @author Nick
  */
-public class Strategy_B implements AbstractStrategy {
+public class Strategy_B extends StrategyProduct implements AbstractStrategy {
 
     private final String name = "Strategy-B";
 
@@ -18,7 +18,7 @@ public class Strategy_B implements AbstractStrategy {
     private final AvailableCryptoList list;
     private final HashMap<String, Coin> hmap;
 
-    private Strategy_B() {
+    public Strategy_B() {
         list = AvailableCryptoList.getInstance();
         hmap = list.getMap();
     }

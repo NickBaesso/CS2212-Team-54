@@ -15,32 +15,36 @@ public class Trade {
     private ArrayList<Trader> traderList;
     private AvailableCryptoList list;
     private HashMap<String, Coin> hmap;
+    private StrategyCreator [] creators = new StrategyCreator[4];
+    private StrategyProduct [] products = new StrategyProduct[4];
 
     public Trade(ArrayList<Trader> traderList) {
         this.traderList = traderList;
+        creators[0] = new StrategyCreatorA();
+        creators[1] = new StrategyCreatorB();
+        creators[2] = new StrategyCreatorC();
+        creators[3] = new StrategyCreatorD();
+        for (int i = 0; i < creators.length; i++)
+            products[i] = creators[i].factoryMethod();
     }
 
 
-    /**
-     *
-     * @return
-     */
     // Output like this: {{"Trader-3", "Strategy-C", "HNT", "Buy", "1000", "2.59","20-January-2022"},}
     public String[][] doTrade() {
-        ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
+        ArrayList <ArrayList<String>> result = new ArrayList<ArrayList<String>>();
 
         updateInterestedCoins();
 
         for (Trader trader : traderList) {
             AbstractStrategy strategy;
 
-            if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_A")) {
+            if (trader.getStrategy().getClass().getName().equals(products[0].getClass().getName())) { // "strategy.Strategy_A"
                 strategy = Strategy_A.getInstance();
             }
-            else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_B")) {
+            else if (trader.getStrategy().getClass().getName().equals(products[1].getClass().getName())) { // "strategy.Strategy_B"
                 strategy = Strategy_B.getInstance();
             }
-            else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_C")) {
+            else if (trader.getStrategy().getClass().getName().equals(products[2].getClass().getName())) {//"strategy.Strategy_C"
                 strategy = Strategy_C.getInstance();
             }
             else {
@@ -74,13 +78,13 @@ public class Trade {
 
             AbstractStrategy strategy;
 
-            if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_A")) {
+            if (trader.getStrategy().getClass().getName().equals(products[0].getClass().getName())) { // "strategy.Strategy_A"
                 strategy = Strategy_A.getInstance();
             }
-            else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_B")) {
+            else if (trader.getStrategy().getClass().getName().equals(products[1].getClass().getName())) { // "strategy.Strategy_B"
                 strategy = Strategy_B.getInstance();
             }
-            else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_C")) {
+            else if (trader.getStrategy().getClass().getName().equals(products[2].getClass().getName())) {//"strategy.Strategy_C"
                 strategy = Strategy_C.getInstance();
             }
             else {
