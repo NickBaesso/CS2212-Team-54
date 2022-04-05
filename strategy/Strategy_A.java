@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-public class Strategy_A extends StrategyProduct implements AbstractStrategy {
+public class Strategy_A extends StrategyManufacturer_A implements AbstractStrategy {
 
     public static String name = "Strategy-A";
 
@@ -38,8 +38,8 @@ public class Strategy_A extends StrategyProduct implements AbstractStrategy {
     @Override
     public TradeResult rule_1() {
 
-        Condition c1 = new Condition(hmap.get("btc"), 9999999, "<=");  // BTC is less than or equal to 50,000
-        Condition c2 = new Condition(hmap.get("ada"), 1, ">");  // ADA is more than 2
+        Condition c1 = new Condition(hmap.get("btc"), 60000, "<=");  // BTC is less than or equal to 50,000
+        Condition c2 = new Condition(hmap.get("ada"), 1, ">");  // ADA is more than 1
         Quantity quan = new Quantity(true, 10);  // true for crypto amount
 
         if (c1.evaluate() && c2.evaluate()) {
@@ -61,7 +61,7 @@ public class Strategy_A extends StrategyProduct implements AbstractStrategy {
     @Override
     public TradeResult rule_2() {
 
-        Condition c1 = new Condition(hmap.get("eth"), 3500, "<");  // ETH is less than 3500
+        Condition c1 = new Condition(hmap.get("eth"), 5000, "<");  // ETH is less than 3500
         Condition c2 = new Condition(hmap.get("ada"), 2, "<=");  // ADA is less than or equal to 2
         Quantity quan = new Quantity(false, 1000);  // false for CAD amount
 
@@ -84,7 +84,7 @@ public class Strategy_A extends StrategyProduct implements AbstractStrategy {
     @Override
     public TradeResult rule_3() {
 
-        Condition c1 = new Condition(hmap.get("dot"), 25, ">");  // DOT is greater than 25
+        Condition c1 = new Condition(hmap.get("dot"), 20, ">");  // DOT is greater than 25
         Condition c2 = new Condition(hmap.get("ada"), 2, "<=");  // ADA is less than or equal to 2
         Quantity quan = new Quantity(true, 5);  // true for crypto amount
 
@@ -107,10 +107,11 @@ public class Strategy_A extends StrategyProduct implements AbstractStrategy {
     @Override
     public TradeResult rule_4() {
 
-        Condition c1 = new Condition(hmap.get("ada"), 3, ">");  // ADA is greater than 3
+        Condition c1 = new Condition(hmap.get("ada"), 2, ">");  // ADA is greater than 3
+        Condition c2 = new Condition(hmap.get("eth"), 4000, "<");
         Quantity quan = new Quantity(false, 1000);  // false for CAD amount
 
-        if (c1.evaluate()) {
+        if (c1.evaluate() && c2.evaluate()) {
             return new TradeResult(
                     name,                             // Strategy-A
                     hmap.get("ada"),                  // coin ADA

@@ -195,6 +195,7 @@ public class MainUI extends GenericUI implements ActionListener {
                 }
                 String[] coinNames = coinObject.toString().split(",");
                 ArrayList<Coin> clist = new ArrayList<Coin>();
+                //System.out.println(Arrays.deepToString(coinNames));
 
                 for (String cname : coinNames) {
                     String csymbol = cname.toLowerCase();

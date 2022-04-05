@@ -27,18 +27,20 @@ public class AvailableCryptoList {
 	private Map<String, Coin> availableCryptosMap = new HashMap<>();
 	private List<Coin> availableCryptosList = new ArrayList<>();
 
-	public static AvailableCryptoList getInstance() {  // Singleton
+	/**
+	 * Singleton pattern
+	 * @return the only instance
+	 */
+	public static AvailableCryptoList getInstance() {
 		if (instance == null)
 			instance = new AvailableCryptoList();
 
 		return instance;
 	}
 
-	/**
-	 * looks for all available crypto coins
-	 * from coin gecko
-	 */
-	private AvailableCryptoList() { findAvailableCryptos(); }
+	private AvailableCryptoList() {
+		findAvailableCryptos();
+	}
 
 	public void call() {
 		String urlString = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=VNEY4VV2AWF1EB51";
@@ -76,12 +78,62 @@ public class AvailableCryptoList {
 		}
 	}
 
+
 	/**
-	 * Goes to the coingecko website itself
-	 * and creates a JSON file of all
+	 *
+	 * @param clist
+	 *
+	 * update only the prices of the coins as specified in the list
 	 */
+	public void updatePrices(ArrayList<Coin> clist) {
+		String urlString =
+				"https://api.coingecko.com/api/v3/coins/markets" +
+						"?vs_currency=cad&order=market_cap_desc&per_page=100&page=1&sparkline=false";
+//		ALPHAVANTAGE API KEY = VNEY4VV2AWF1EB51
+		try {
+			URL url = new URL(urlString);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.connect();
+			int responsecode = conn.getResponseCode();
+			if (responsecode == 200) {
+				String inline = "";
+				Scanner sc = new Scanner(url.openStream());
+				while (sc.hasNext()) {
+					inline += sc.nextLine();
+				}
+				sc.close();
+				JsonArray jsonArray = new JsonParser().parse(inline).getAsJsonArray();
+				int size = jsonArray.size();
+
+				String name, symbol, id;
+				double price;
+				for (int i = 0; i < size; i++) {
+					JsonObject object = jsonArray.get(i).getAsJsonObject();
+					name = object.get("name").getAsString();
+					symbol = object.get("symbol").getAsString();
+					id = object.get("id").getAsString();
+					price = object.get("current_price").getAsDouble();
+
+
+					for (Coin c : clist) {
+						if (c.getSymbol().equals(symbol)) {
+							System.out.println(String.format("%s's price changed from %f to %f", c.getSymbol().toUpperCase(), c.getPrice(), price));
+							c.setPrice(price);
+						}
+					}
+				}
+			}
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block e.printStackTrace();
+		}
+	}
+
 	private void findAvailableCryptos() {
-		String urlString = "https://api.coingecko.com/api/v3/coins/markets" +
+
+		String urlString =
+				"https://api.coingecko.com/api/v3/coins/markets" +
 						"?vs_currency=cad&order=market_cap_desc&per_page=100&page=1&sparkline=false";
 //		ALPHAVANTAGE API KEY = VNEY4VV2AWF1EB51
 		try {
@@ -123,9 +175,6 @@ public class AvailableCryptoList {
 		}
 	}
 
-	/**
-	 * @return returns a list of the available crypto coins
-	 */
 	public Coin [] getAvailableCryptos() {
 		return availableCryptosList.toArray(new Coin[availableCryptosList.size()]);
 	}
@@ -134,9 +183,6 @@ public class AvailableCryptoList {
 		return availableCryptosMap.get(cryptoName).getID();
 	}
 
-	/**
-	 * @return returns a map of the coin names and prices.
-	 */
 	public HashMap<String, Coin> getMap() {
 		if (availableCryptosMap.isEmpty())
 			findAvailableCryptos();

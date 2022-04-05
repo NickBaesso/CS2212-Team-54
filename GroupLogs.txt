@@ -12,7 +12,7 @@ Nick, Jay, Jiangqi, Lina |	April 2nd–April 5th   |	Corresponded over email abo
                          |                        | process; roles:                                        |
                          |                        | Nick:
                          |                        | Jay:
-                         |                        | Jiangqi:
+                         |                        | Jiangqi: Coding except for Strategy B to C
                          |                        | Lina: provided updates/comments to classes written by  |
                          |                        | group and logged meetings                              |
 ------------------------------------------------------------------------------------------------------------

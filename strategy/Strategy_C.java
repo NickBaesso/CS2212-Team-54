@@ -10,8 +10,8 @@ import java.util.HashMap;
  * 3rd of 4 strategies for trading
  * @author Nick
  */
-public class Strategy_C implements AbstractStrategy {
-    private final String name = "Strategy-C";
+public class Strategy_C extends StrategyManufacturer_C implements AbstractStrategy {
+    private static final String name = "Strategy-C";
 
     private static Strategy_C instance;
     private AvailableCryptoList list;
@@ -41,8 +41,6 @@ public class Strategy_C implements AbstractStrategy {
     @Override
     public TradeResult rule_1() {
 
-//         Condition c1 = new Condition(hmap.get("eth"), 2500, "<=");  // ETH is less than or equal to 2500
-//         Condition c2 = new Condition(hmap.get("bnb"), 550, ">");  // BNB is more than 550
         Condition c1 = new Condition(hmap.get("eth"), 4000, "<=");  // ETH is less than or equal to 4000
         Condition c2 = new Condition(hmap.get("bnb"), 350, ">");  // BNB is more than 350
         
@@ -67,8 +65,6 @@ public class Strategy_C implements AbstractStrategy {
     @Override
     public TradeResult rule_2() {
 
-//         Condition c1 = new Condition(hmap.get("eth"), 3000, "<=");  // ETH is less than or equal to 3000
-//         Condition c2 = new Condition(hmap.get("sol"), 150, ">");  // SOL is less than 150
         Condition c1 = new Condition(hmap.get("eth"), 4500, "<=");  // ETH is less than or equal to 4500
         Condition c2 = new Condition(hmap.get("sol"), 50, ">");  // SOL is less than 50
         
@@ -93,8 +89,6 @@ public class Strategy_C implements AbstractStrategy {
     @Override
     public TradeResult rule_3() {
 
-//         Condition c1 = new Condition(hmap.get("eth"), 3500, ">");  // ETH is less than or equal to 3500
-//         Condition c2 = new Condition(hmap.get("xmr"), 350, ">");  // XMR is more than 350
         Condition c1 = new Condition(hmap.get("eth"), 5000, ">");  // ETH is less than or equal to 5000
         Condition c2 = new Condition(hmap.get("xmr"), 150, ">");  // XMR is more than 150
         
@@ -119,7 +113,6 @@ public class Strategy_C implements AbstractStrategy {
     @Override
     public TradeResult rule_4() {
 
-//         Condition c1 = new Condition(hmap.get("eth"), 4000, ">");  // ETH is more than 4000
         Condition c1 = new Condition(hmap.get("eth"), 6000, ">");  // ETH is more than 6000
         
         Quantity quan = new Quantity(true, 10);  // true for crypto amount

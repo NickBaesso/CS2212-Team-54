@@ -220,8 +220,6 @@ public class DataVisualizationCreator {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
 		for (Trader t : traderList) {
-			System.out.print(frequency(resultList, t.getName()));
-			System.out.print(t.getName());
 
 			String strategyName;
 			if (t.getStrategy().getClass().getName().equals("strategy.Strategy_A")) {
@@ -237,7 +235,6 @@ public class DataVisualizationCreator {
 				strategyName = Strategy_D.getInstance().getName();
 			}
 
-			System.out.print(strategyName);
 			dataset.setValue(frequency(resultList, t.getName()), t.getName(), strategyName);
 		}
 
@@ -249,7 +246,7 @@ public class DataVisualizationCreator {
 		CategoryAxis domainAxis = new CategoryAxis("Strategy");
 		plot.setDomainAxis(domainAxis);
 		LogAxis rangeAxis = new LogAxis("Actions(Buys or Sells)");
-		rangeAxis.setRange(new Range(1.0, 20.0));
+		rangeAxis.setRange(new Range(0.1,20.0));
 		plot.setRangeAxis(rangeAxis);
 
 		//plot.mapDatasetToRangeAxis(0, 0);// 1st dataset to 1st y-axis
