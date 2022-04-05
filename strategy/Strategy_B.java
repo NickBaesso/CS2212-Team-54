@@ -10,7 +10,7 @@ import java.util.HashMap;
  * 2nd of four strategies for the program.
  * @author Nick
  */
-public class Strategy_B implements AbstractStrategy {
+public class Strategy_B extends StrategyManufacturer_B implements AbstractStrategy {
     private static final String name = "Strategy-B";
 
     private static Strategy_B instance;
@@ -41,10 +41,8 @@ public class Strategy_B implements AbstractStrategy {
     @Override
     public TradeResult rule_1() {
 
-//         Condition c1 = new Condition(hmap.get("btc"), 40000, "<=");  // BTC is less than or equal to 40,000
-//         Condition c2 = new Condition(hmap.get("bnb"), 600, ">");  // BNB is more than 600
-        Condition c1 = new Condition(hmap.get("btc"), 60000, "<=");  // BTC is less than or equal to 40,000
-        Condition c2 = new Condition(hmap.get("bnb"), 400, ">");  // BNB is more than 600
+        Condition c1 = new Condition(hmap.get("btc"), 60000, "<=");  // BTC is less than or equal to 60,000
+        Condition c2 = new Condition(hmap.get("bnb"), 400, ">");  // BNB is more than 400
         
         Quantity quan = new Quantity(true, 5);  // true for crypto amount
 
@@ -67,10 +65,8 @@ public class Strategy_B implements AbstractStrategy {
     @Override
     public TradeResult rule_2() {
 
-//         Condition c1 = new Condition(hmap.get("btc"), 55000, "<=");  // BTC is less than or equal to 55,000
-//         Condition c2 = new Condition(hmap.get("ada"), 2, "<=");  // ADA is less than or equal to 2
-        Condition c1 = new Condition(hmap.get("btc"), 60000, "<=");  // BTC is less than or equal to 55,000
-        Condition c2 = new Condition(hmap.get("ada"), 3, "<=");  // ADA is less than or equal to 2
+        Condition c1 = new Condition(hmap.get("btc"), 60000, "<=");  // BTC is less than or equal to 60,000
+        Condition c2 = new Condition(hmap.get("ada"), 3, "<=");  // ADA is less than or equal to 3
         
         Quantity quan = new Quantity(false, 10000);  // false for CAD amount
 
@@ -93,10 +89,8 @@ public class Strategy_B implements AbstractStrategy {
     @Override
     public TradeResult rule_3() {
 
-//         Condition c1 = new Condition(hmap.get("btc"), 60000, "<=");  // ETH is less than or equal to 60000
-//         Condition c2 = new Condition(hmap.get("eth"), 4000, ">");  // ETH is more than 4000
-        Condition c1 = new Condition(hmap.get("btc"), 60000, "<=");  // ETH is less than or equal to 60000
-        Condition c2 = new Condition(hmap.get("eth"), 2000, ">");  // ETH is more than 4000
+        Condition c1 = new Condition(hmap.get("btc"), 60000, "<=");  // ETH is less than or equal to 60,000
+        Condition c2 = new Condition(hmap.get("eth"), 2000, ">");  // ETH is more than 2000
         
         Quantity quan = new Quantity(false, 10000);  // false for CAD amount
 
@@ -119,7 +113,6 @@ public class Strategy_B implements AbstractStrategy {
     @Override
     public TradeResult rule_4() {
 
-//         Condition c1 = new Condition(hmap.get("btc"), 80000, ">");  // ETH is more than 80000
         Condition c1 = new Condition(hmap.get("btc"), 80000, ">");  // ETH is more than 80000
         
         Quantity quan = new Quantity(true, 10);  // true for crypto amount
