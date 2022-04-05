@@ -39,7 +39,8 @@ import utils.*;
  * user throught the program execution. This will also
  * be how the user interacts with the program.
  *
- * @author Jiangqi
+ * @originalAuthor CS2212
+ * adaptation by Jiangqi
  */
 public class MainUI extends GenericUI implements ActionListener {
     private static final long serialVersionUID = 1L;
@@ -211,20 +212,28 @@ public class MainUI extends GenericUI implements ActionListener {
                     JOptionPane.showMessageDialog(this, "please fill in strategy name on line " + (count + 1));
                     return;
                 }
+
+                /*
+                 *
+                 * Using factory method design pattern.
+                 *
+                 */
                 String strategyName = strategyObject.toString();
                 AbstractStrategy strategy;
                 if (strategyName.equals("Strategy-A")) {
-                    strategy = Strategy_A.getInstance();
+                    strategy = new StrategyManufacturer_A().getStrategy();
                 }
                 else if (strategyName.equals("Strategy-B")) {
-                    strategy = Strategy_B.getInstance();
+                    strategy = new StrategyManufacturer_B().getStrategy();
                 }
                 else if (strategyName.equals("Strategy-C")) {
-                    strategy = Strategy_C.getInstance();
+                    strategy = new StrategyManufacturer_C().getStrategy();
                 }
                 else {
-                    strategy = Strategy_D.getInstance();
+                    strategy = new StrategyManufacturer_D().getStrategy();
                 }
+
+
                 System.out.println(traderName + " " + Arrays.toString(coinNames) + " " + strategyName);
                 Trader t = new Trader(traderName, clist, strategy);
                 traderList.add(t);

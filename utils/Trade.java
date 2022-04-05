@@ -34,17 +34,20 @@ public class Trade {
         for (Trader trader : traderList) {
             AbstractStrategy strategy;
 
+            /*
+             * Factory method design pattern - Jiangqi
+             */
             if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_A")) {
-                strategy = Strategy_A.getInstance();
+                strategy = new StrategyManufacturer_A().getStrategy();
             }
             else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_B")) {
-                strategy = Strategy_B.getInstance();
+                strategy = new StrategyManufacturer_B().getStrategy();
             }
             else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_C")) {
-                strategy = Strategy_C.getInstance();
+                strategy = new StrategyManufacturer_C().getStrategy();
             }
             else {
-                strategy = Strategy_D.getInstance();
+                strategy = new StrategyManufacturer_D().getStrategy();
             }
 
             for (TradeResult t : strategy.trade()) {
@@ -74,17 +77,20 @@ public class Trade {
 
             AbstractStrategy strategy;
 
+            /*
+             * Factory method design pattern - Jiangqi
+             */
             if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_A")) {
-                strategy = Strategy_A.getInstance();
+                strategy = new StrategyManufacturer_A().getStrategy();
             }
             else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_B")) {
-                strategy = Strategy_B.getInstance();
+                strategy = new StrategyManufacturer_B().getStrategy();
             }
             else if (trader.getStrategy().getClass().getName().equals("strategy.Strategy_C")) {
-                strategy = Strategy_C.getInstance();
+                strategy = new StrategyManufacturer_C().getStrategy();
             }
             else {
-                strategy = Strategy_D.getInstance();
+                strategy = new StrategyManufacturer_D().getStrategy();
             }
 
             for (TradeResult t : strategy.trade()) {
