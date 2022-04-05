@@ -10,7 +10,7 @@ import java.util.HashMap;
  * last of 4 strategies for computing trade data
  * @author Nick
  */
-public class Strategy_D implements AbstractStrategy {
+public class Strategy_D extends StrategyManufacturer_D implements AbstractStrategy {
     private static final String name = "Strategy-D";
 
     private static Strategy_D instance;
@@ -41,8 +41,6 @@ public class Strategy_D implements AbstractStrategy {
     @Override
     public TradeResult rule_1() {
 
-//         Condition c1 = new Condition(hmap.get("bnb"), 600, "<=");  // BNB is less than or equal to 600
-//         Condition c2 = new Condition(hmap.get("luna"), 80, ">");  // LUNA is more than 80
         Condition c1 = new Condition(hmap.get("bnb"), 900, "<=");  // BNB is less than or equal to 900
         Condition c2 = new Condition(hmap.get("luna"), 50, ">");  // LUNA is more than 50
         
@@ -67,8 +65,6 @@ public class Strategy_D implements AbstractStrategy {
     @Override
     public TradeResult rule_2() {
 
-//         Condition c1 = new Condition(hmap.get("bnb"), 550, "<=");  // BNB is less than or equal to 550
-//         Condition c2 = new Condition(hmap.get("avax"), 125, ">");  // AVAX is more than 125
         Condition c1 = new Condition(hmap.get("bnb"), 750, "<=");  // BNB is less than or equal to 750
         Condition c2 = new Condition(hmap.get("avax"), 25, ">");  // AVAX is more than 25
         
@@ -93,9 +89,6 @@ public class Strategy_D implements AbstractStrategy {
     @Override
     public TradeResult rule_3() {
 
-//         Condition c1 = new Condition(hmap.get("bnb"), 500, "<=");  // BNB is less than or equal to 500
-//         Condition c2 = new Condition(hmap.get("eth"), 3000, ">=");  // ETH is more than or equal to 3000
-//         Condition c3 = new Condition(hmap.get("ada"), 2, ">");  // ADA is more than 2
         Condition c1 = new Condition(hmap.get("bnb"), 700, "<=");  // BNB is less than or equal to 700
         Condition c2 = new Condition(hmap.get("eth"), 1500, ">=");  // ETH is more than or equal to 1500
         Condition c3 = new Condition(hmap.get("ada"), 1, ">");  // ADA is more than 1
@@ -120,7 +113,6 @@ public class Strategy_D implements AbstractStrategy {
      */
     @Override
     public TradeResult rule_4() {
-//         Condition c1 = new Condition(hmap.get("bnb"), 700, ">");  // BNB is more than 700
         Condition c1 = new Condition(hmap.get("bnb"), 600, ">");  // BNB is more than 600
         
         Quantity quan = new Quantity(false, 200);  // false for CAD amount
