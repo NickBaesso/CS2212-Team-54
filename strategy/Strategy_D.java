@@ -11,7 +11,7 @@ import java.util.HashMap;
  * @author Nick
  */
 public class Strategy_D implements AbstractStrategy {
-    private final String name = "Strategy-D";
+    private static final String name = "Strategy-D";
 
     private static Strategy_D instance;
     private AvailableCryptoList list;

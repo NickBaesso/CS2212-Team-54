@@ -4,7 +4,7 @@ import strategy.AbstractStrategy;
 
 import java.util.ArrayList;
 
-/*
+/**
  * equivalent to broker
  * by Jiangqi
  */

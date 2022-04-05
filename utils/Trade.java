@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 /**
- *
+ * Perform trade for each broker and process results
  */
 public class Trade {
     private ArrayList<Trader> traderList;
@@ -20,12 +20,30 @@ public class Trade {
         this.traderList = traderList;
     }
 
+    /**
+     * Class for strategy pattern
+     */
+    class Context {
+        private AbstractStrategy strategy;
+
+        Context(AbstractStrategy strategy) {
+            this.strategy = strategy;
+        }
+
+        /**
+         *
+         * @return a TradeResult
+         */
+        ArrayList<TradeResult> execute() {
+            return strategy.trade();
+        }
+    }
+
 
     /**
-     *
-     * @return
+     * @return a 2-D array for the table
+     * like this: {{"Trader-3", "Strategy-C", "HNT", "Buy", "1000", "2.59","20-January-2022"},}
      */
-    // Output like this: {{"Trader-3", "Strategy-C", "HNT", "Buy", "1000", "2.59","20-January-2022"},}
     public String[][] doTrade() {
         ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
 
@@ -50,7 +68,13 @@ public class Trade {
                 strategy = new StrategyManufacturer_D().getStrategy();
             }
 
-            for (TradeResult t : strategy.trade()) {
+            /**
+             * Strategy pattern
+             */
+            Context context = new Context(strategy);
+            ArrayList<TradeResult> trlist = context.execute();
+
+            for (TradeResult t : trlist) {
                 ArrayList<String> row = new ArrayList<String>();
 
                 t.trader = trader;
@@ -70,6 +94,10 @@ public class Trade {
         return result.stream().map(u -> u.toArray(new String[0])).toArray(String[][]::new);
     }
 
+    /**
+     *
+     * @return a list of TradeResult for JFree chart statistics
+     */
     public ArrayList<TradeResult> getResultList() {
         ArrayList<TradeResult> resultList = new ArrayList<TradeResult>();
 
@@ -93,7 +121,14 @@ public class Trade {
                 strategy = new StrategyManufacturer_D().getStrategy();
             }
 
-            for (TradeResult t : strategy.trade()) {
+
+            /**
+             * Strategy pattern
+             */
+            Context context = new Context(strategy);
+            ArrayList<TradeResult> trlist = context.execute();
+
+            for (TradeResult t : trlist) {
                 t.trader = trader;
 
                 resultList.add(t);
@@ -103,14 +138,17 @@ public class Trade {
         return resultList;
     }
 
+    /**
+     * update coins prices for traders
+     */
     private void updateInterestedCoins() {
 
         list = AvailableCryptoList.getInstance();
-        hmap = list.getMap();  // this updates all coin prices
 
         for (Trader t : traderList) {
+            list.updatePrices(t.getInterestCoinList());
             for (Coin c : t.getInterestCoinList()) {
-                t.notifyUpdatedCoinPrice(hmap.get(c.getSymbol()));
+                t.notifyUpdatedCoinPrice(c);
             }
         }
     }
