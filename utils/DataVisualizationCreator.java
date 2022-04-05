@@ -37,6 +37,12 @@ import strategy.Strategy_B;
 import strategy.Strategy_C;
 import strategy.Strategy_D;
 
+/**
+ * This class creates the graphical data
+ * displayed to the user interface.
+ *
+ * @author Jiangqi
+ */
 public class DataVisualizationCreator {
 
 	private ArrayList<TradeResult> resultList;
@@ -48,7 +54,10 @@ public class DataVisualizationCreator {
 		trade = new Trade(traderList);
 		this.resultList = trade.getResultList();
 	}
-	
+
+	/**
+	 * Creates the charts for the data
+	 */
 	public void createCharts() {
 //		createTextualOutput();
 		createTableOutput();
@@ -57,44 +66,13 @@ public class DataVisualizationCreator {
 		createBar();
 	}
 
-	private void createTextualOutput() {
-//		DefaultTableModel dtm = new  DefaultTableModel(new Object[] {"structure.Broker Name", "Ticker List", "Strategy Name"}, 1);
-//		JTable table = new JTable(dtm);
-//		//table.setPreferredSize(new Dimension(600, 300));
-//		dtm.e
-//		JScrollPane scrollPane = new JScrollPane(table);
-//		scrollPane.setBorder (BorderFactory.createTitledBorder (BorderFactory.createEtchedBorder (),
-//                "structure.Broker Actions",
-//                TitledBorder.CENTER,
-//                TitledBorder.TOP));
-//		
-//	
-//		
-//		scrollPane.setPreferredSize(new Dimension(800, 300));
-//		table.setFillsViewportHeight(true);;
-		
-//		MainUI.getInstance().updateStats(scrollPane);
-	}
-	
+	/**
+	 * This method constructs the output for
+	 * the table in the UI.
+	 */
 	private void createTableOutput() {
 		// Dummy dates for demo purposes. These should come from selection menu
 		Object[] columnNames = {"Trader","Strategy","CryptoCoin","Action","Quantity","Price","Date"};
-		
-		// Dummy data for demo purposes. These should come from actual fetcher
-//		Object[][] data = {
-//				{"Trader-1", "Strategy-A", "ETH", "Buy", "500", "150.3","13-January-2022"},
-//				{"Trader-2", "Strategy-B", "BTC", "Sell", "200", "50.2","13-January-2022"},
-//				{"Trader-3", "Strategy-C", "USDT", "Buy", "1000", "2.59","15-January-2022"},
-//				{"Trader-1", "Strategy-A", "USDC", "Buy", "500", "150.3","16-January-2022"},
-//				{"Trader-2", "Strategy-B", "ADA", "Sell", "200", "50.2","16-January-2022"},
-//				{"Trader-3", "Strategy-C", "SOL", "Buy", "1000", "2.59","17-January-2022"},
-//				{"Trader-1", "Strategy-A", "ONE", "Buy", "500", "150.3","17-January-2022"},
-//				{"Trader-2", "Strategy-B", "MANA", "Sell", "200", "50.2","17-January-2022"},
-//				{"Trader-3", "Strategy-C", "AVAX", "Buy", "1000", "2.59","19-January-2022"},
-//				{"Trader-1", "Strategy-A", "LUNA", "Buy", "500", "150.3","19-January-2022"},
-//				{"Trader-2", "Strategy-B", "FTM", "Sell", "200", "50.2","19-January-2022"},
-//				{"Trader-3", "Strategy-C", "HNT", "Buy", "1000", "2.59","20-January-2022"},
-//		};
 
 
 		Object[][] data = trade.doTrade();
@@ -217,9 +195,13 @@ public class DataVisualizationCreator {
 		MainUI.getInstance().updateStats(chartPanel);
 	}
 
+	/**
+	 * @param list
+	 * @param name
+	 * @return the frequency for the strategies provided by the trade results
+	 */
 	private int frequency(ArrayList<TradeResult> list, String name) {
 		int i = 0;
-
 		for (TradeResult r : list) {
 			if (r.trader.getName().equals(name)) {
 				i++;
@@ -228,17 +210,14 @@ public class DataVisualizationCreator {
 
 		return i;
 	}
-	
+
+	/**
+	 * This method creates the bars in
+	 * the bar charts based on the frequencies.
+	 */
 	private void createBar() {
 		
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-////		Those are hard-coded values!!!!
-////		You will have to come up with a proper datastructure to populate the BarChart with live data!
-////		dataset.setValue(6, "Trader-1", "Strategy-A");
-//		dataset.setValue(5, "Trader-2", "Strategy-B");
-////		dataset.setValue(0, "Trader-3", "Strategy-E");
-////		dataset.setValue(1, "Trader-4", "Strategy-C");
-//		dataset.setValue(10, "Trader-5", "Strategy-D");
 
 		for (Trader t : traderList) {
 			System.out.print(frequency(resultList, t.getName()));

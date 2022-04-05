@@ -34,9 +34,11 @@ public class AvailableCryptoList {
 		return instance;
 	}
 
-	private AvailableCryptoList() {
-		findAvailableCryptos();
-	}
+	/**
+	 * looks for all available crypto coins
+	 * from coin gecko
+	 */
+	private AvailableCryptoList() { findAvailableCryptos(); }
 
 	public void call() {
 		String urlString = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=VNEY4VV2AWF1EB51";
@@ -74,10 +76,12 @@ public class AvailableCryptoList {
 		}
 	}
 
+	/**
+	 * Goes to the coingecko website itself
+	 * and creates a JSON file of all
+	 */
 	private void findAvailableCryptos() {
-
-		String urlString =
-				"https://api.coingecko.com/api/v3/coins/markets" +
+		String urlString = "https://api.coingecko.com/api/v3/coins/markets" +
 						"?vs_currency=cad&order=market_cap_desc&per_page=100&page=1&sparkline=false";
 //		ALPHAVANTAGE API KEY = VNEY4VV2AWF1EB51
 		try {
@@ -119,6 +123,9 @@ public class AvailableCryptoList {
 		}
 	}
 
+	/**
+	 * @return returns a list of the available crypto coins
+	 */
 	public Coin [] getAvailableCryptos() {
 		return availableCryptosList.toArray(new Coin[availableCryptosList.size()]);
 	}
@@ -127,6 +134,9 @@ public class AvailableCryptoList {
 		return availableCryptosMap.get(cryptoName).getID();
 	}
 
+	/**
+	 * @return returns a map of the coin names and prices.
+	 */
 	public HashMap<String, Coin> getMap() {
 		if (availableCryptosMap.isEmpty())
 			findAvailableCryptos();

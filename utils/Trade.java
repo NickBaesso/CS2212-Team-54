@@ -9,7 +9,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 /**
- *
+ * This class is what performs the
+ * actual trading in the program.
  */
 public class Trade {
     private ArrayList<Trader> traderList;
@@ -102,6 +103,10 @@ public class Trade {
         return resultList;
     }
 
+    /**
+     * This method is invoked when
+     * a coins price has been modified and needs to be updated.
+     */
     private void updateInterestedCoins() {
 
         list = AvailableCryptoList.getInstance();

@@ -173,7 +173,7 @@ public class MainUI extends GenericUI implements ActionListener {
     }
 
     /**
-     * This method handles the insertion of UI object
+     * This method handles the events assigned to individual buttons.
      * @param e
      */
     @Override
