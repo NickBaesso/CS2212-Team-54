@@ -38,8 +38,7 @@ public class Trade {
             return strategy.trade();
         }
     }
-
-
+  
     /**
      * @return a 2-D array for the table
      * like this: {{"Trader-3", "Strategy-C", "HNT", "Buy", "1000", "2.59","20-January-2022"},}

@@ -19,8 +19,7 @@ public class DataFetcher {
 
 	private JsonObject getDataForCrypto(String id, String date) {
 
-		String urlString = String.format(
-				"https://api.coingecko.com/api/v3/coins/%s/history?date=%s", id, date);
+		String urlString = String.format("https://api.coingecko.com/api/v3/coins/%s/history?date=%s", id, date);
 		
 		try {
 			URL url = new URL(urlString);

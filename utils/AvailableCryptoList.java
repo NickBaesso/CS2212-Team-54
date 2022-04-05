@@ -19,7 +19,7 @@ import infrastructure.Coin;
  * This class is responsible for the retrieving crypto
  * coin data from the coin gecko website.
  *
- * @author Original: Kostas Kontogiannis, Modifications: Jinagqi
+ * @author Original: Kostas Kontogiannis, Modifications: Jiangqi
  */
 public class AvailableCryptoList {
 	private static AvailableCryptoList instance = null;
@@ -175,7 +175,7 @@ public class AvailableCryptoList {
 		}
 	}
 
-	public Coin[] getAvailableCryptos() {
+	public Coin [] getAvailableCryptos() {
 		return availableCryptosList.toArray(new Coin[availableCryptosList.size()]);
 	}
 
@@ -184,20 +184,15 @@ public class AvailableCryptoList {
 	}
 
 	public HashMap<String, Coin> getMap() {
-		if (availableCryptosMap.isEmpty()) {
+		if (availableCryptosMap.isEmpty())
 			findAvailableCryptos();
-			return (HashMap<String, Coin>) availableCryptosMap;
-		}
-		else {
-			return (HashMap<String, Coin>) availableCryptosMap;
-		}
+		return (HashMap<String, Coin>) availableCryptosMap;
 	}
 
 	public static void main(String[] args) throws Exception {
 		Coin[] list = getInstance().getAvailableCryptos();
-		for (Coin coin : list) {
+		for (Coin coin : list)
 			System.out.printf("%s: %f\n", coin.getSymbol(), coin.getPrice());
-		}
 	}
 
 }

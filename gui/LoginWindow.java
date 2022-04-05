@@ -10,6 +10,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * This window handles the login UI.
+ * @author Jiangqi
+ */
 public class LoginWindow extends GenericUI implements ActionListener {
     private GenericUI mainUI;
     private JButton submitButton;
@@ -98,6 +102,10 @@ public class LoginWindow extends GenericUI implements ActionListener {
         constraints.gridwidth = colspan;
     }
 
+    /**
+     * On a successful login this method will open up the
+     * main user interface window and close this one.
+     */
     @Override
     public void request() {
         // Use "lazy" initialization
