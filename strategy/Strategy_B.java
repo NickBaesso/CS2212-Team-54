@@ -10,15 +10,14 @@ import java.util.HashMap;
  * 2nd of four strategies for the program.
  * @author Nick
  */
-public class Strategy_B extends StrategyProduct implements AbstractStrategy {
-
+public class Strategy_B implements AbstractStrategy {
     private final String name = "Strategy-B";
 
     private static Strategy_B instance;
-    private final AvailableCryptoList list;
-    private final HashMap<String, Coin> hmap;
+    private AvailableCryptoList list;
+    private HashMap<String, Coin> hmap;
 
-    public Strategy_B() {
+    private Strategy_B() {
         list = AvailableCryptoList.getInstance();
         hmap = list.getMap();
     }
@@ -31,7 +30,7 @@ public class Strategy_B extends StrategyProduct implements AbstractStrategy {
     }
 
     public static String getName() {
-        return "Strategy-B";
+        return name;
     }
 
     /**
@@ -42,8 +41,11 @@ public class Strategy_B extends StrategyProduct implements AbstractStrategy {
     @Override
     public TradeResult rule_1() {
 
-        Condition c1 = new Condition(hmap.get("btc"), 40000, "<=");  // BTC is less than or equal to 40,000
-        Condition c2 = new Condition(hmap.get("bnb"), 600, ">");  // BNB is more than 600
+//         Condition c1 = new Condition(hmap.get("btc"), 40000, "<=");  // BTC is less than or equal to 40,000
+//         Condition c2 = new Condition(hmap.get("bnb"), 600, ">");  // BNB is more than 600
+        Condition c1 = new Condition(hmap.get("btc"), 60000, "<=");  // BTC is less than or equal to 40,000
+        Condition c2 = new Condition(hmap.get("bnb"), 400, ">");  // BNB is more than 600
+        
         Quantity quan = new Quantity(true, 5);  // true for crypto amount
 
         if (c1.evaluate() && c2.evaluate()) {
@@ -65,8 +67,11 @@ public class Strategy_B extends StrategyProduct implements AbstractStrategy {
     @Override
     public TradeResult rule_2() {
 
-        Condition c1 = new Condition(hmap.get("btc"), 55000, "<=");  // BTC is less than or equal to 55,000
-        Condition c2 = new Condition(hmap.get("ada"), 2, "<=");  // ADA is less than or equal to 2
+//         Condition c1 = new Condition(hmap.get("btc"), 55000, "<=");  // BTC is less than or equal to 55,000
+//         Condition c2 = new Condition(hmap.get("ada"), 2, "<=");  // ADA is less than or equal to 2
+        Condition c1 = new Condition(hmap.get("btc"), 60000, "<=");  // BTC is less than or equal to 55,000
+        Condition c2 = new Condition(hmap.get("ada"), 3, "<=");  // ADA is less than or equal to 2
+        
         Quantity quan = new Quantity(false, 10000);  // false for CAD amount
 
         if (c1.evaluate() && c2.evaluate()) {
@@ -88,16 +93,19 @@ public class Strategy_B extends StrategyProduct implements AbstractStrategy {
     @Override
     public TradeResult rule_3() {
 
+//         Condition c1 = new Condition(hmap.get("btc"), 60000, "<=");  // ETH is less than or equal to 60000
+//         Condition c2 = new Condition(hmap.get("eth"), 4000, ">");  // ETH is more than 4000
         Condition c1 = new Condition(hmap.get("btc"), 60000, "<=");  // ETH is less than or equal to 60000
-        Condition c2 = new Condition(hmap.get("eth"), 4000, ">");  // ETH is more than 4000
-        Quantity quan = new Quantity(false, 1000);  // false for CAD amount
+        Condition c2 = new Condition(hmap.get("eth"), 2000, ">");  // ETH is more than 4000
+        
+        Quantity quan = new Quantity(false, 10000);  // false for CAD amount
 
         if (c1.evaluate() && c2.evaluate()) {
             return new TradeResult(
                     name,                             // Strategy-B
                     hmap.get("btc"),                  // coin BTC
                     "Buy",                            // action
-                    quan,                             // buy $1000 worth of BTC
+                    quan,                             // buy $10000 worth of BTC
                     hmap.get("btc").getPrice());      // BTC price
         }
         else return null;
@@ -111,7 +119,9 @@ public class Strategy_B extends StrategyProduct implements AbstractStrategy {
     @Override
     public TradeResult rule_4() {
 
+//         Condition c1 = new Condition(hmap.get("btc"), 80000, ">");  // ETH is more than 80000
         Condition c1 = new Condition(hmap.get("btc"), 80000, ">");  // ETH is more than 80000
+        
         Quantity quan = new Quantity(true, 10);  // true for crypto amount
 
         if (c1.evaluate()) {
