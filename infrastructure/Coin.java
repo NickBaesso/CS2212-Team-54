@@ -15,7 +15,7 @@ public class Coin {
 
     /**
      * Creates a coin with the given parameters
-     * this one
+     * this constructor takes a price argument
      * @param name
      * @param symbol
      * @param ID
@@ -28,6 +28,12 @@ public class Coin {
         this.ID = ID;
     }
 
+    /**
+     * Same as above constructor. Does not take a price argument.
+     * @param name
+     * @param symbol
+     * @param ID
+     */
     public Coin(String name, String symbol, String ID) {
         this.name = name;
         price = 0.0;
@@ -35,22 +41,39 @@ public class Coin {
         this.ID = ID;
     }
 
+    /**
+     * @return coin price
+     */
     public double getPrice() {
         return price;
     }
 
+    /**
+     * Update the coin price.
+     * @param price
+     */
     public void setPrice(double price) {
         this.price = price;
     }
 
+    /**
+     *
+     * @return the name of the coin (i.e DOGE, BTC, ETH, etc)
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @return coin symbol
+     */
     public String getSymbol() {
         return symbol;
     }
 
+    /**
+     * @return coin identifier
+     */
     public String getID() {
         return ID;
     }
