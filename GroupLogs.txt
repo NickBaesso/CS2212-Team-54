@@ -10,7 +10,8 @@ Nick, Jay, Jiangqi, Lina |	April 1st 	          | (20 minutes) Zoom meeting – 
 ------------------------------------------------------------------------------------------------------------
 Nick, Jay, Jiangqi, Lina |	April 2nd–April 5th   |	Corresponded over email about updates regarding the    |
                          |                        | process; roles:                                        |
-                         |                        | Nick:
+                         |                        | Nick: Coding for Strategy B to C, bugfixing and test   |
+                         |                        | cases                                                  |
                          |                        | Jay:
                          |                        | Jiangqi: Coding except for Strategy B to C
                          |                        | Lina: provided updates/comments to classes written by  |
