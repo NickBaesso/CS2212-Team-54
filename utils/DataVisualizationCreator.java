@@ -241,8 +241,6 @@ public class DataVisualizationCreator {
 //		dataset.setValue(10, "Trader-5", "Strategy-D");
 
 		for (Trader t : traderList) {
-			System.out.print(frequency(resultList, t.getName()));
-			System.out.print(t.getName());
 
 			String strategyName;
 			if (t.getStrategy().getClass().getName().equals("strategy.Strategy_A")) {
@@ -258,7 +256,6 @@ public class DataVisualizationCreator {
 				strategyName = Strategy_D.getInstance().getName();
 			}
 
-			System.out.print(strategyName);
 			dataset.setValue(frequency(resultList, t.getName()), t.getName(), strategyName);
 		}
 

@@ -2,9 +2,11 @@ import gui.GenericUI;
 import gui.LoginWindow;
 import gui.MainUI;
 import infrastructure.*;
+import utils.AvailableCryptoList;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main {
 
@@ -20,6 +22,10 @@ public class Main {
     }*/
 
     public static void main(String[] args) {
+
+        //get initial price
+        AvailableCryptoList list = AvailableCryptoList.getInstance();
+
         Authenticator auth = new Authenticator("pw.txt");
         GenericUI proxy = new LoginWindow(auth);
         proxy.setVisible(true);

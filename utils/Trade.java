@@ -90,7 +90,8 @@ public class Trade {
             }
         }
 
-        System.out.println(Arrays.deepToString(result.stream().map(u -> u.toArray(new String[0])).toArray(String[][]::new)));
+        // test
+        //System.out.println(Arrays.deepToString(result.stream().map(u -> u.toArray(new String[0])).toArray(String[][]::new)));
         return result.stream().map(u -> u.toArray(new String[0])).toArray(String[][]::new);
     }
 

@@ -118,6 +118,7 @@ public class AvailableCryptoList {
 
 					for (Coin c : clist) {
 						if (c.getSymbol().equals(symbol)) {
+							System.out.println(String.format("%s's price changed from %f to %f", c.getSymbol().toUpperCase(), c.getPrice(), price));
 							c.setPrice(price);
 						}
 					}
