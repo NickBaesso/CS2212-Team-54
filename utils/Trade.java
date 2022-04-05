@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+/**
+ *
+ */
 public class Trade {
     private ArrayList<Trader> traderList;
     private AvailableCryptoList list;
@@ -18,6 +21,10 @@ public class Trade {
     }
 
 
+    /**
+     *
+     * @return
+     */
     // Output like this: {{"Trader-3", "Strategy-C", "HNT", "Buy", "1000", "2.59","20-January-2022"},}
     public String[][] doTrade() {
         ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
@@ -25,7 +32,6 @@ public class Trade {
         updateInterestedCoins();
 
         for (Trader trader : traderList) {
-
             AbstractStrategy strategy;
 
             /*

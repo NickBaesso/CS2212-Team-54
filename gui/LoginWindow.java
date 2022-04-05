@@ -1,16 +1,17 @@
 package gui;
 
+import com.sun.tools.javac.Main;
 import infrastructure.Authenticator;
+import infrastructure.Trader;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-/**
- * This class handles the login ui creation and event handling.
- * @author Jiangqi
- */
-public class LoginWindow extends JFrame implements ActionListener {
+public class LoginWindow extends GenericUI implements ActionListener {
+    private GenericUI mainUI;
     private JButton submitButton;
     private JPanel panel, submitPanel;
     private JLabel userLabel, pwLabel;
@@ -96,4 +97,21 @@ public class LoginWindow extends JFrame implements ActionListener {
         constraints.gridheight = rowspan;
         constraints.gridwidth = colspan;
     }
+
+    @Override
+    public void request() {
+        // Use "lazy" initialization
+        if (mainUI == null) {
+            mainUI = MainUI.getInstance();
+            ArrayList<Trader> traderList = new ArrayList<Trader>();
+
+            ((MainUI) mainUI).setTraderList(traderList); // Cast main ui to MainUI class
+
+            mainUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            mainUI.setVisible(true);
+            mainUI.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        }
+        mainUI.request();
+    }
+
 }

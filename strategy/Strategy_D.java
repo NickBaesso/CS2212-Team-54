@@ -15,8 +15,8 @@ public class Strategy_D implements AbstractStrategy {
     private final String name = "Strategy-D";
 
     private static Strategy_D instance;
-    private AvailableCryptoList list;
-    private HashMap<String, Coin> hmap;
+    private final AvailableCryptoList list;
+    private final HashMap<String, Coin> hmap;
 
     private Strategy_D() {
         list = AvailableCryptoList.getInstance();
